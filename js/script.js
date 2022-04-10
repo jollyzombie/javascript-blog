@@ -35,13 +35,6 @@
     console.log('target article-active: ', targetArticle);
   }
 
-  const links = document.querySelectorAll('.titles a');
-
-  for (let link of links) {
-    link.addEventListener('click', titleClickHandler)
-  }
-
-
   const optArticleSelector = '.post',
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles';
@@ -75,6 +68,12 @@
       //titleList.insertAdjacentHTML('beforebegin', linkHTML);
     }
     titleList.innerHTML = html;
+
+    const links = document.querySelectorAll('.titles a');
+
+    for (let link of links) {
+      link.addEventListener('click', titleClickHandler)
+    }
   }
   generateTitleLinks();
 }
