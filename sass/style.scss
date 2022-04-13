@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap');
-/* Variables */
 
+/* Variables */
 $color-light: #F6F4F4;
 $color-dark: #1a1d1a;
 $dark-sand: #897E8B;
@@ -15,8 +15,9 @@ $font-text: 'Newsreader', serif;
 $transition: all 1s;
 
 /* Global */
-
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -40,6 +41,7 @@ body {
   text-transform: uppercase;
   font-family: $font-header;
   font-weight: 600;
+
   span {
     text-transform: none;
     font-weight: 400;
@@ -48,12 +50,10 @@ body {
 }
 
 /* Layout */
-
 .wrapper {
   display: flex;
   margin-left: 10px;
 }
-
 
 .posts {
   flex: 2 0 0;
@@ -68,9 +68,7 @@ body {
   padding: 40px;
 }
 
-
 /* Logo */
-
 .logo {
   font-family: $font-logo;
   font-weight: 400;
@@ -80,7 +78,6 @@ body {
 }
 
 /* Lists */
-
 .list {
   list-style-type: none;
   margin: 0;
@@ -110,7 +107,6 @@ body {
 }
 
 /* Authors */
-
 .authors {
   li {
     margin-bottom: 12px;
@@ -118,9 +114,8 @@ body {
 }
 
 .author-name {
-  display:flex;
+  display: flex;
   align-items: center;
-
 
   .author-pic {
     width: 50px;
@@ -132,15 +127,14 @@ body {
     &:hover {
       border: 3px solid $color-dark;
       opacity: 0.7;
-
     }
   }
 }
 
 /* Post */
-
 .post {
   display: none;
+
   &.active {
     display: block;
   }
@@ -157,13 +151,13 @@ body {
 
 .post-tags {
   display: flex;
+
   p {
     margin: 0 10px 0 0;
   }
 }
 
 /* Tags */
-
 .post-tags {
   .list-horizontal {
     li a {
@@ -174,7 +168,7 @@ body {
       border-radius: 30px;
 
       &:hover {
-        background: transparent !important;;
+        background: transparent;
         border: 1px solid $color-dark;
         color: $color-dark;
       }
