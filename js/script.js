@@ -1,3 +1,4 @@
+/* eslint-disable no-inner-declarations */
 'use strict';
 {
   const titleClickHandler = function (event) {
@@ -13,7 +14,7 @@
 
     /* [DONE] add class 'active' to the clicked link */
     clickedElement.classList.add('active');
-    console.log('clickedElement:', clickedElement);
+    //console.log('clickedElement:', clickedElement);
 
     /* [DONE] remove class 'active' from all articles */
     const activeArticles = document.querySelectorAll('.posts .post');
@@ -24,25 +25,24 @@
 
     /* get 'href' attribute from the clicked link */
     const articleSelector = clickedElement.getAttribute('href');
-    console.log('was clicked:', articleSelector);
+    //console.log('was clicked:', articleSelector);
 
     /* find the correct article using the selector (value of 'href' attribute) */
     const targetArticle = document.querySelector(articleSelector);
-    console.log('correct article:', targetArticle);
+    //console.log('correct article:', targetArticle);
 
     /* add class 'active' to the correct article */
     targetArticle.classList.add('active');
-    console.log('target article-active: ', targetArticle);
+    //console.log('target article-active: ', targetArticle);
   };
 
   const optArticleSelector = '.post',
     optTitleSelector = '.post-title',
-    optTitleListSelector = '.titles';
+    optTitleListSelector = '.titles',
+    optArticleTagsSelector = '.post-tags, .list';
 
 
-  // eslint-disable-next-line no-inner-declarations
-  function generateTitleLinks (){
-
+  function generateTitleLinks() {
     /* [DONE] remove the contents of titlelist */
     const titleList = document.querySelector(optTitleListSelector);
 
@@ -51,7 +51,7 @@
 
     let html = '';
 
-    for (let article of articles){
+    for (let article of articles) {
 
       /* [DONE] get the article id */
       const articleId = article.getAttribute('id');
@@ -60,8 +60,8 @@
       const articleTitle = article.querySelector(optTitleSelector).innerHTML;
 
       /* [DONE] create HTML of the link */
-      const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle +'</span></a></li>';
-      console.log(linkHTML);
+      const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+      //console.log(linkHTML);
 
       /* [DONE] insert link into titleList */
       html = html + linkHTML;
@@ -77,4 +77,50 @@
     }
   }
   generateTitleLinks();
+
+
+
+  function generateTags() {
+    /* [DONE] find all articles */
+    const articles = document.querySelectorAll(optArticleSelector);
+
+    /* [DONE] START LOOP: for every article: */
+    for (let article of articles) {
+
+      /* [DONE] find tags wrapper */
+      const tagList = article.querySelector(optArticleTagsSelector);
+      console.log('taglist:', tagList);
+
+      /* [DONE] make html variable with empty string */
+      let html = '';
+
+      /* [DONE] get tags from data-tags attribute */
+      const articleTags = article.getAttribute('data-tags');
+      console.log('articleTags:', articleTags);
+
+      /* [DONE] split tags into array */
+      const articleTagsArray = articleTags.split(' ');
+      console.log('articleTagsArray:', articleTagsArray);
+
+      /* [DONE] START LOOP: for each tag */
+      for (let tag of articleTagsArray) {
+        console.log('tag:', tag);
+
+        /* [DONE] generate HTML of the link */
+        const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
+        console.log('linkHTML:', linkHTML);
+
+        /* [DONE] add generated code to html variable */
+        html = html + linkHTML;
+
+        /* [DONE] END LOOP: for each tag */
+      }
+      /* [DONE] insert HTML of all the links into the tags wrapper */
+      tagList.innerHTML = html;
+
+      /* [DONE] END LOOP: for every article: */
+    }
+  }
+  generateTags();
 }
+
