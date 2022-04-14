@@ -8,9 +8,12 @@ $green: #26413c;
 $cinnabar: #ff6f00;
 $morning-blue: #8ab0ab;
 
-$font-logo: 'Sacramento', cursive;
-$font-header: 'Oswald', sans-serif;
-$font-text: 'Newsreader', serif;
+$font-logo: 'Sacramento',
+cursive;
+$font-header: 'Oswald',
+sans-serif;
+$font-text: 'Newsreader',
+serif;
 
 $transition: all 1s;
 
@@ -160,12 +163,14 @@ body {
 /* Tags */
 .post-tags {
   .list-horizontal {
-    li a {
+
+    ul {
       background: $cinnabar;
       color: $color-dark;
       font-size: 12px;
       padding: 3px 10px;
       border-radius: 30px;
+      list-style-type: none;
 
       &:hover {
         background: transparent;
