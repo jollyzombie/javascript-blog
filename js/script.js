@@ -8,6 +8,8 @@
   const optArticleTagsSelector = '.post-tags, .list';
   const optArticleAuthorSelector = '.post-author';
   const optTagsListSelector = '.list.tags';
+  const optCloudClassCount = 5;
+  const optCloudClassPrefix = 'tag-size-';
 
 
   const titleClickHandler = function (event) {
@@ -54,6 +56,33 @@
     for (let link of links) {
       link.addEventListener('click', titleClickHandler);
     }
+  }
+
+  function calculateTagsParams(tags) {
+
+    const params = {
+      max: 0,
+      min: 999999
+    };
+
+    for (let tag in tags) {
+      console.log(tag + ' is used ' + tags[tag] + ' times');
+
+      params.max = Math.max(tags[tag], params.max);
+      params.min = Math.min(tags[tag], params.max);
+    }
+    return params;
+  }
+
+  function calculateTagClass(count, params) {
+
+    const normalizedCount = count - params.min;
+    const normalizedMax = params.max - params.min;
+    const percentage = normalizedCount / normalizedMax;
+    const classNumber = Math.floor(percentage * (optCloudClassCount - 1) + 1);
+
+    return optCloudClassPrefix + classNumber;
+
   }
 
 
@@ -109,26 +138,28 @@
     const tagList = document.querySelector(optTagsListSelector);
 
     /* [NEW] create variable for all links HTML code */
+    const tagsParams = calculateTagsParams(allTags);
+    console.log('tagsParams:', tagsParams);
+
     let allTagsHTML = '';
 
     /* [NEW] START LOOP: for each tag in allTags: */
     for (let tag in allTags) {
 
       /* [NEW] generate code of a link and add it to allTagsHTML */
-      const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
-      allTagsHTML += linkHTML + ' (' + allTags[tag] + ') ';
+      const taglinkHTML = '<li><a class="' + calculateTagClass(allTags[tag], tagsParams) + '" href="#tag-' + tag + '">' + tag + '</a></li>';
+      console.log(taglinkHTML);
 
-    /* [NEW] END LOOP: for each tag in allTags: */
+      allTagsHTML += taglinkHTML + ' (' + allTags[tag] + ') ';
+
+      /* [NEW] END LOOP: for each tag in allTags: */
     }
 
     /*[NEW] add HTML from allTagsHTML to tagList */
     tagList.innerHTML = allTagsHTML;
-
-    /* [NEW] add HTML from allTags to taglist */
-    //tagList.innerHTML = allTags.join('');
   }
 
-  
+
   function tagClickHandler(event) {
     event.preventDefault();
 
