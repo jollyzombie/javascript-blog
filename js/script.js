@@ -58,9 +58,8 @@
 
 
   function generateTags() {
-    /* [NEW] create a new variable allTags with an empty array */
-    let allTags = [];
-    console.log(allTags);
+    /* [NEW] create a new variable allTags with an empty object */
+    let allTags = {};
 
     /* find all articles */
     const articles = document.querySelectorAll(optArticleSelector);
@@ -79,7 +78,6 @@
       /* split tags into array */
       const articleTagsArray = articleTags.split(' ');
 
-
       /* START LOOP: for each tag */
       for (let tag of articleTagsArray) {
 
@@ -90,22 +88,47 @@
         html = html + linkHTML;
 
         /* [NEW] check if this link is NOT already in allTags */
-        if (allTags.indexOf(linkHTML) == -1) {
+        if (!allTags[tag]) {
 
-          /* [NEW] add generated code to allTags array */
-          allTags.push(linkHTML);
+          /** [NEW] add tag to allTags object */
+          allTags[tag] = 1;
+        } else {
+          allTags[tag]++;
         }
+
+        /* END LOOP: for each tag */
       }
+
+      /* insert HTML of all the links into the tags wrapper */
       tagList.innerHTML = html;
+
+      /* END LOOP: for every article: */
     }
+
     /* [NEW] find list of tags in right column */
     const tagList = document.querySelector(optTagsListSelector);
 
+    /* [NEW] create variable for all links HTML code */
+    let allTagsHTML = '';
+
+    /* [NEW] START LOOP: for each tag in allTags: */
+    for (let tag in allTags) {
+
+      /* [NEW] generate code of a link and add it to allTagsHTML */
+      const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
+      allTagsHTML += linkHTML + ' (' + allTags[tag] + ') ';
+
+    /* [NEW] END LOOP: for each tag in allTags: */
+    }
+
+    /*[NEW] add HTML from allTagsHTML to tagList */
+    tagList.innerHTML = allTagsHTML;
+
     /* [NEW] add HTML from allTags to taglist */
-    tagList.innerHTML = allTags.join(' ');
+    //tagList.innerHTML = allTags.join('');
   }
 
-
+  
   function tagClickHandler(event) {
     event.preventDefault();
 
@@ -187,3 +210,6 @@
   generateAuthors();
   addClickListenerToAuthors();
 }
+
+
+
