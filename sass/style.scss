@@ -8,12 +8,9 @@ $green: #26413c;
 $cinnabar: #657eff;
 $morning-blue: #8ab0ab;
 
-$font-logo: 'Fraunces',
-serif;
-$font-header: 'Fraunces',
-serif;
-$font-text: 'Commissioner',
-sans-serif;
+$font-logo: 'Fraunces', serif;
+$font-header: 'Fraunces', serif;
+$font-text: 'Commissioner', sans-serif;
 
 $transition: all .3s;
 
@@ -78,7 +75,8 @@ body {
   font-size: 90px;
   line-height: .3;
   text-align: center;
-  margin-top: 100px;;
+  margin-top: 100px;
+  ;
 }
 
 .tagline {
@@ -219,7 +217,6 @@ body {
     }
   }
 }
-
 
 /* Tags Right sidebar */
 
