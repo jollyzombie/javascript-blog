@@ -8,9 +8,12 @@ $green: #26413c;
 $cinnabar: #657eff;
 $morning-blue: #8ab0ab;
 
-$font-logo: 'Fraunces', serif;
-$font-header: 'Fraunces', serif;
-$font-text: 'Commissioner', sans-serif;
+$font-logo: 'Fraunces',
+serif;
+$font-header: 'Fraunces',
+serif;
+$font-text: 'Commissioner',
+sans-serif;
 
 $transition: all .3s;
 
@@ -133,25 +136,6 @@ body {
   }
 }
 
-.author-name {
-  display: flex;
-  align-items: center;
-
-  .author-pic {
-    width: 60px;
-    height: 60px;
-    border-radius: 50px;
-    border: 3px solid transparent;
-    margin-right: 10px;
-    transition: $transition;
-
-    &:hover {
-      border: 3px solid $cinnabar;
-      opacity: 0.8;
-    }
-  }
-}
-
 /* Post */
 .post {
   display: none;
@@ -205,6 +189,12 @@ body {
     line-height: 1;
     margin-right: 10px;
 
+    .active {
+      font-weight: 500;
+      color: $color-dark;
+      text-decoration: underline;
+    }
+
     &:hover {
       background: $color-dark;
     }
@@ -217,6 +207,7 @@ body {
     }
   }
 }
+
 
 /* Tags Right sidebar */
 
