@@ -18,6 +18,7 @@
       },
     },
     article: {
+      title: '.post-title',
       tags: '.post-tags .list',
       author: '.post-author',
     },
@@ -60,17 +61,17 @@
   };
 
 
+
   function generateTitleLinks(customSelector = '') {
     const titleList = document.querySelector(select.listOf.titles);
     const articles = document.querySelectorAll(select.all.articles + customSelector);
+
     let html = '';
 
     for (let article of articles) {
-
       const articleId = article.getAttribute('id');
       const articleTitle = article.querySelector(select.article.title).innerHTML;
       const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
-
       html +=linkHTML;
     }
 
@@ -138,7 +139,7 @@
     for (let tag in allTags) {
       const tagLinkHTML = '<li><a class="' + calculateTagClass(allTags[tag], tagsParams) + '" href="#tag-' + tag + '">' + tag + '</a></li>';
 
-      allTagsHTML += tagLinkHTML; //+ ' (' + allTags[tag] + ') ';
+      allTagsHTML += tagLinkHTML;//+ ' (' + allTags[tag] + ') ';
     }
     tagList.innerHTML = allTagsHTML;
   }
