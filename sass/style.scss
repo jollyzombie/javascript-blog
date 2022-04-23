@@ -71,15 +71,15 @@ body {
 }
 
 /* Logo */
+h1 {
+  text-align: center;
+}
+
 .logo {
   font-family: $font-logo;
   font-weight: 600;
   text-decoration: underline;
   font-size: 90px;
-  line-height: .3;
-  text-align: center;
-  margin-top: 100px;
-  ;
 }
 
 .tagline {
